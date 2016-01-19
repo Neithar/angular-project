@@ -11,7 +11,7 @@ GENERAL STYLES
 body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
-	background-color: $gray;
+	background-color: $white;
 	color: $text-color;
 	font-family: $font;
 	font-size: 100%;
@@ -110,7 +110,7 @@ HEADER STYLES
 *********************/
 
 .header {
-	background-color: $white;
+	background-color: $purple;
 }
 
 #inner-header {
@@ -182,10 +182,10 @@ RESPONSIVE NAV
 	}
 	
 	&:before {
-		content:'\2261';
-		font-size: 24px;
+		content:     '\2261';
+		font-size:   24px;
 		font-weight: bold;
-		color: #555;
+		color:       #ffffff;
 	}
 }
 

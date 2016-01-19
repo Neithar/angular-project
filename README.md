@@ -22,7 +22,7 @@ bower install angularjs-boilerplate
 or
 
 ```bash
-git clone https://github.com/jbutko/AngularJS-Boilerplate.git
+git clone https://github.com/Neithar/AngularJS-Boilerplate.git
 ```
 
 ## 1. Setup
