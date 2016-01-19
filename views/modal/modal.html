@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <button type="button" class="btn-close close fa pull-right" data-dismiss="modal" aria-label="Close"
+            data-ng-click="modalOptions.close()"><i class="fa fa-times fa-2x"></i>
+    </button>
+    <h3>{{modalOptions.headerText}}</h3>
+</div>
+<div class="modal-body">
+    <p>{{modalOptions.bodyText}}</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-orange btn-modal pull-left"
+            data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}
+    </button>
+    <a data-ng-click="modalOptions.close()" class="reject-link open-popup-link">Cancel</a>
+</div>

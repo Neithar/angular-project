@@ -1,16 +1,8 @@
 /**
- * 
- * AngularJS Boilerplate
- * @description           Description
- * @author                Jozef Butko // www.jozefbutko.com/resume
- * @url                   www.jozefbutko.com
- * @version               1.1.7
- * @date                  March 2015
- * @license               MIT
- * 
+ * @description
+ * @author  Sonia Benítez
  */
 ;(function() {
-
 
   /**
    * Definition of the main app module and its dependencies
@@ -40,16 +32,6 @@
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .when('/setup', {
-        templateUrl: 'views/setup.html',
         controller: 'MainController',
         controllerAs: 'main'
       })

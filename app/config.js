@@ -1,6 +1,4 @@
 ;(function() {
-
-
 	/**
 	 * Place to store API URL or any other constants
 	 * Usage:

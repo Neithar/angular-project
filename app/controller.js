@@ -19,9 +19,7 @@
     // 'controller as' syntax
     var self = this;
 
-
     ////////////  function definitions
-
 
     /**
      * Load some data
