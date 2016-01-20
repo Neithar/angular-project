@@ -1,8 +1,8 @@
 {
-  "name": "AngularJS Boilerplate",
-  "version": "1.1.7",
+  "name": "Custom AngularJS Boilerplate for wuaki",
+  "version": "1.0",
   "authors": [
-    "jozef butko <jbutko@gmail.com> / jozefbutko.com/resume"
+    "Sonia Benitez Martinez"
   ],
   "description": "Description goes here",
   "main": "app.js",
@@ -20,8 +20,16 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.3.13",
+    "angular": "1.4.8",
     "angular-route": "~1.3.13",
-    "angular-sanitize": "~1.3.13"
+    "angular-sanitize": "~1.3.13",
+    "fontawesome": "4.1.0",
+    "angular-bootstrap": "0.14.3",
+    "angular-animate": "1.4.8",
+    "angular-messages": "1.4.8",
+    "bootstrap-sass": "boostrap-sass#~3.3.6"
+  },
+  "resolutions": {
+    "angular": "1.4.8"
   }
 }

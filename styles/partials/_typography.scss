@@ -10,12 +10,12 @@ Typography
 /* ===============================
      fonts
    =============================== */
-$font: "Open Sans", Helvetica, Arial, sans-serif;
-$font-italic:  Cambria, Times New Roman, Times, serif;
-$font-bold: Helvetica, Arial, sans-serif;
-$font-semibold: Helvetica, Arial, sans-serif;
-$font-extrabold: Helvetica, Arial, sans-serif;
-$font-extralightitalic: Helvetica, Arial, sans-serif;
+$font: Arial, sans-serif;
+$font-italic:  Arial, sans-serif;
+$font-bold: Arial, sans-serif;
+$font-semibold: Arial, sans-serif;
+$font-extrabold: Arial, sans-serif;
+$font-extralightitalic: Arial, sans-serif;
 
 /* ===============================
      sizes
@@ -57,3 +57,12 @@ p {
           font-feature-settings: "liga", "dlig";
 }
 
+table, label{
+  font-size: 1.4em;
+}
+
+.form-control{
+  input{
+    color: $black;
+  }
+}

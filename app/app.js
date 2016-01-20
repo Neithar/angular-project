@@ -9,7 +9,10 @@
    */
   angular
     .module('boilerplate', [
-      'ngRoute'
+      'ngRoute',
+      'ui.bootstrap',
+      'ngAnimate',
+      'ngMessages'
     ])
     .config(config);
 

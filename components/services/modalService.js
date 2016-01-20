@@ -9,7 +9,7 @@
      */
     angular
         .module('boilerplate')
-        .factory('modalService', [
+        .service('modalService', [
             '$uibModal', modalService
         ]);
 
@@ -58,7 +58,7 @@
             }
 
             return $uibModal.open(tempModalDefaults).result;
-        };
+        }
     }
 
 })();

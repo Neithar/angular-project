@@ -6,6 +6,9 @@ Date: Mar 2015
 
 ******************************************************************/
 
+// bootstrap
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
 // normalize: http://necolas.github.io/normalize.css/
 @import "partials/normalize";
 
@@ -36,12 +39,6 @@ IMPORTING MODULES
 
 // buttons
 @import "modules/buttons";
-
-// forms (inputs & labels)
-@import "modules/forms";
-
-// bootstrap
-@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 /*********************
 BASE (MOBILE) SIZE
