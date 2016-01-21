@@ -25,7 +25,10 @@
 
         // 'controller as' syntax
         var self = this;
-        $rootScope.form = {};
+
+        $scope.genres = LocalStorage.get('genre');
+        if($scope.genres !== null || $scope.genres !== undefined){
+        }
         ////////////  function definitions
 
         $scope.addGenre = function () {
@@ -54,12 +57,24 @@
             modalService.showModal(modalDefaults, modalOptions);
 
         }
-
+        /**
+         * Creates new genre
+         * @param genreName
+         */
         $rootScope.createGenre = function (genreName){
             LocalStorage.addNewGenre(genreName);
-            console.log(genreName.name.$viewValue);
+            $scope.genres = '';
+            $scope.genres = LocalStorage.get('genre');
         }
-
+        /**
+         * Removes new genre
+         * @param genreName
+         */
+        $rootScope.dropGnre = function (genreName) {
+            LocalStorage.removeGenre(genreName);
+            $scope.genres = '';
+            $scope.genres = LocalStorage.get('genre');
+        }
         /**
          * Load some data
          * @return {Object} Returned object
@@ -68,6 +83,11 @@
         //   .then(function(ovocie) {
         //     self.ovocie = ovocie.data;
         //   });
+
+        $scope.sort = function(keyname){
+            $scope.sortKey = keyname;   //set the sortKey to the param passed
+            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        }
     }
 
 

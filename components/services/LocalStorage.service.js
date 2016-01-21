@@ -87,7 +87,7 @@
         }
 
         /**
-         * Add localStorage value in ArrayName and check if it already do not exists
+         * Add localStorage value in genres and check if it already do not exists
          *
          * @param {string} name Name of localStorage array value
          * @param {string} val  Return stored value
@@ -97,19 +97,22 @@
                 console.log('localStorage not supported, make sure you have the $cookies supported.');
             }
 
-            if(window.localStorage.getItem('genre') === null){
-                var genre = new Array();
-                genre.push(val.$name);
-                return $window.localStorage && $window.localStorage.setItem('genre',  JSON.stringify(genre));
-            }else{
-                var myGenres =  JSON.parse($window.localStorage.getItem('genre'));
-                // in case we already have localStorage with same name alert error msg
-                if(myGenres.indexOf(val)==-1){
-                    console.warn('Genre in localStorage array with the name ' + val.$name + ' already exists. Please pick another name.');
-                }else{
-                    myGenres.push(val);
-                    return $window.localStorage && $window.localStorage.setItem('genre', myGenres);
-                }
+            if (window.localStorage.getItem('genre') === null || window.localStorage.getItem('genre') === undefined) {
+                var genre = [];
+                genre.push({
+                    name: val.name.$viewValue,
+                    num: 0
+                });
+                $rootScope.sort('name');
+                return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(genre));
+            } else {
+                var myGenres = JSON.parse($window.localStorage.getItem('genre'));
+                myGenres.push({
+                    name: val.name.$viewValue,
+                    num: 0
+                });
+                return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(myGenres));
+
             }
         }
 
@@ -125,18 +128,15 @@
             if (!supported) {
                 console.log('localStorage not supported, make sure you have the $cookies supported.');
             }
-           // return $window.localStorage && $window.localStorage.removeItem(name);
-            if(arrayGenres === undefined){
+            // return $window.localStorage && $window.localStorage.removeItem(name);
+            if (arrayGenres === undefined) {
                 console.warn('Not generes in localStorage');
-            }else{
-                var what, a = arguments, L = a.length, ax;
-                while (L > 1 && arrayGenres.length) {
-                    what = a[--L];
-                    while ((ax= arrayGenres) !== -1) {
-                        arrayGenres.splice(ax, 1);
-                    }
-                }
-                    return $window.localStorage && $window.localStorage.setItem('genre',  JSON.stringify(arrayGenres));
+            } else {
+
+                var arrayGenres = arrayGenres.filter(function (jsonObject) {
+                    return jsonObject.name != val.name;
+                });
+                return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(arrayGenres));
             }
         }
 
@@ -154,7 +154,6 @@
 
             return $window.localStorage && angular.fromJson($window.localStorage.getItem(name));
         }
-
 
         /**
          * Update already stored data

@@ -1,0 +1,43 @@
+<div class="col-md-3"></div>
+<div class="col-md-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Movies</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="col-md-6">Title</th>
+                    <th class="col-md-4">Genre</th>
+                    <th class="col-md-2"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="gen in genres track by $index">
+                    <td class="col-md-6">{{gen}}</td>
+                    <td class="col-md-4"></td>
+                    <td class="col-md-2"><a ng-click="dropMovie(gen)"><i
+                            class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Filters</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Actions</h2>
+            <a ng-click="addMovie()" class="btn btn-primary">Add Movie</a>
+        </div>
+    </div>
+
+</div>

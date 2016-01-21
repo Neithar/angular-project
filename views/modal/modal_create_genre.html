@@ -10,7 +10,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <input type="text" ng-model="genre.name"  ng-class="{ 'error' : newGenre.$invalid }" class="text form-control" name="name" required ng-minlength="3" value="">
+                <input type="text" data-ng-model="genre.name"  ng-class="{ 'error' : newGenre.$invalid }" class="text form-control" name="name" required ng-minlength="3" value="">
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 data-ng-click="modalOptions.close();" data-dismiss="modal">Cancel
         </button>
         </button>
-        <button type="submit" data-ng-click="createGenre(newGenere)" class="btn btn-primary">{{modalOptions.actionButtonText}}
+        <button type="submit" data-ng-click="createGenre(newGenre);modalOptions.close()" class="btn btn-primary">{{modalOptions.actionButtonText}}
         </button>
     </div>
 </form>

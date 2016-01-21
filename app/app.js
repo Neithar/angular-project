@@ -12,7 +12,8 @@
       'ngRoute',
       'ui.bootstrap',
       'ngAnimate',
-      'ngMessages'
+      'ngMessages',
+      'angularUtils.directives.dirPagination'
     ])
     .config(config);
 
