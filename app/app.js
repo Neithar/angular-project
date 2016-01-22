@@ -13,7 +13,8 @@
       'ui.bootstrap',
       'ngAnimate',
       'ngMessages',
-      'angularUtils.directives.dirPagination'
+      'angularUtils.directives.dirPagination',
+      'angucomplete'
     ])
     .config(config);
 

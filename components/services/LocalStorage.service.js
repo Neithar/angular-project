@@ -57,6 +57,8 @@
             get: get,
             addNewGenre: addNewGenre,
             removeGenre: removeGenre,
+            addNewMovie: addNewMovie,
+            removeMovie: removeMovie,
             update: update,
             remove: remove,
             removeAll: removeAll,
@@ -87,7 +89,7 @@
         }
 
         /**
-         * Add localStorage value in genres and check if it already do not exists
+         * Add localStorage value in genres
          *
          * @param {string} name Name of localStorage array value
          * @param {string} val  Return stored value
@@ -103,7 +105,7 @@
                     name: val.name.$viewValue,
                     num: 0
                 });
-                $rootScope.sort('name');
+                $rootScope.sortGenres('name');
                 return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(genre));
             } else {
                 var myGenres = JSON.parse($window.localStorage.getItem('genre'));
@@ -137,6 +139,83 @@
                     return jsonObject.name != val.name;
                 });
                 return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(arrayGenres));
+            }
+        }
+
+
+        /**
+         * Add localStorage value in Movies
+         *
+         * @param {string} name Name of localStorage array value
+         * @param {string} val  Return stored value
+         */
+        function addNewMovie(val) {
+            if (!supported) {
+                console.log('localStorage not supported, make sure you have the $cookies supported.');
+            }
+
+            if (window.localStorage.getItem('movie') === null || window.localStorage.getItem('movie') === undefined) {
+                var movie = [];
+                movie.push({
+                    name: val.name.$viewValue,
+                    genre: val.genre.$viewValue
+                });
+                for (var key in $rootScope.genres) {
+                    if(val.genre.$viewValue === $rootScope.genres[key].name){
+                        $rootScope.genres[key].num += 1;
+                    }
+                }
+                $rootScope.sortMovies('name');
+                var updatedGenres = angular.toJson($rootScope.genres);
+                $window.localStorage.setItem('genre', updatedGenres)
+                return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(movie));
+            } else {
+                var myMovies = JSON.parse($window.localStorage.getItem('movie'));
+                myMovies.push({
+                    name: val.name.$viewValue,
+                    genre: val.genre.$viewValue
+                });
+                for (var key in $rootScope.genres) {
+                    if(val.genre.$viewValue === $rootScope.genres[key].name){
+                        $rootScope.genres[key].num += 1;
+                    }
+                }
+                $rootScope.sortMovies('name');
+                var updatedGenres = angular.toJson($rootScope.genres);
+                $window.localStorage.setItem('genre', updatedGenres)
+                return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(myMovies));
+
+            }
+        }
+
+        /**
+         * Remove localStorage value in Movies
+         *
+         * @param {string} name Name of localStorage array value
+         * @param {string} val  Return stored value
+         */
+        function removeMovie(val) {
+            var arrayMovies = JSON.parse($window.localStorage.getItem('movie'));
+
+            if (!supported) {
+                console.log('localStorage not supported, make sure you have the $cookies supported.');
+            }
+            // return $window.localStorage && $window.localStorage.removeItem(name);
+            if (arrayMovies === undefined) {
+                console.warn('Not movies in localStorage');
+            } else {
+
+                var arrayMovies = arrayMovies.filter(function (jsonObject) {
+                    return jsonObject.name != val.name;
+                });
+                for (var key in $rootScope.genres) {
+                    if(val.genre === $rootScope.genres[key].name){
+                        $rootScope.genres[key].num -= 1;
+                    }
+                }
+                var updatedGenres = angular.toJson($rootScope.genres);
+                $window.localStorage.setItem('genre', updatedGenres);
+                return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(arrayMovies));
             }
         }
 

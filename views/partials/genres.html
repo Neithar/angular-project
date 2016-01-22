@@ -10,19 +10,20 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th class="col-md-6" ng-click="sort('name')">Name &nbsp;&nbsp;
-                        <i class="fa " ng-show="sortKey=='name'" ng-class="{'fa-sort-asc':reverse,'fa-sort-desc':!reverse}"></i>
+                    <th class="col-md-6" ng-click="sortGenres('name')">Name &nbsp;&nbsp;
+                        <i class="fa " ng-show="sortKeyGen=='name'" ng-class="{'fa-sort-asc':reverseGen,'fa-sort-desc':!reverseGen}"></i>
                     </th>
                     <th class="col-md-4">Num movies</th>
                     <th class="col-md-2"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr dir-paginate="gen in genres | orderBy:sortKey:reverse | filter:search | itemsPerPage:5" ng-model="search">
+                <tr dir-paginate="gen in genres | orderBy:sortKeyGen:reverseGen | filter:searchGen | itemsPerPage:5" ng-model="searchGen">
                     <td class="col-md-6">{{gen.name}}</td>
                     <td class="col-md-4">{{gen.num}}</td>
                     <td class="col-md-2"><a ng-click="dropGnre(gen)"><i
-                            class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a></td>
+                            class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -48,7 +49,8 @@
         <div class="col-md-12">
             <form class="form-inline">
                 <div class="form-group">
-                    <input type="text" ng-model="search" class="form-control" placeholder="Search"> <i class="btn btn-default fa fa-refresh" ng-click="search=undefined"></i>
+                    <input type="text" ng-model="searchGen" class="form-control" placeholder="Search">
+                    <i class="btn btn-default fa fa-refresh" ng-click="searchGen=undefined"></i>
                 </div>
             </form>
         </div>

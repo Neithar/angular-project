@@ -18,6 +18,7 @@
      * @param LocalStorage
      * @param QueryService
      * @param modalService
+     * @param $rootScope
      * @param $scope
      * @constructor
      */
@@ -26,9 +27,9 @@
         // 'controller as' syntax
         var self = this;
 
-        $scope.genres = LocalStorage.get('genre');
-        if($scope.genres !== null || $scope.genres !== undefined){
-        }
+        $rootScope.genres = LocalStorage.get('genre');
+        $scope.movies = LocalStorage.get('movie');
+
         ////////////  function definitions
 
         $scope.addGenre = function () {
@@ -47,24 +48,17 @@
                 bodyText: ''
             };
 
-            //Pending -> Call API to accept
-            //modalService.showModal({}, modalOptions).then(function (result) {
-            //    formApiService.contractCancel($scope.id).then(function () {
-            //        $location.path('/mi_cuenta/rechazar_nuevo_contrato/');
-            //    }, processError);
-            //});
-
             modalService.showModal(modalDefaults, modalOptions);
 
         }
         /**
          * Creates new genre
-         * @param genreName
+         * @pa"ram genreName
          */
-        $rootScope.createGenre = function (genreName){
+        $rootScope.createGenre = function (genreName) {
             LocalStorage.addNewGenre(genreName);
-            $scope.genres = '';
-            $scope.genres = LocalStorage.get('genre');
+            $rootScope.genres = '';
+            $rootScope.genres = LocalStorage.get('genre');
         }
         /**
          * Removes new genre
@@ -72,22 +66,83 @@
          */
         $rootScope.dropGnre = function (genreName) {
             LocalStorage.removeGenre(genreName);
-            $scope.genres = '';
-            $scope.genres = LocalStorage.get('genre');
+            $rootScope.genres = '';
+            $rootScope.genres = LocalStorage.get('genre');
+        }
+
+        /**
+         * Sort JSON Generes array by 'keyname'
+         * @param keyname
+         */
+        $rootScope.sortGenres = function (keyname) {
+            $scope.sortKeyGen = keyname;   //set the sortKey to the param passed
+            $scope.reverseGen = !$scope.reverseGen; //if true make it false and vice versa
+        }
+
+
+        $scope.addMovie = function () {
+
+            var modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: 'views/modal/modal_create_movie.html'
+            };
+
+            var modalOptions = {
+                closeButtonText: 'Close',
+                actionButtonText: 'Create',
+                headerText: 'Add Movie',
+                bodyText: ''
+            };
+
+            modalService.showModal(modalDefaults, modalOptions);
+
         }
         /**
-         * Load some data
-         * @return {Object} Returned object
+         * Creates new movie
+         * @param genreName
          */
-        // QueryService.query('GET', 'posts', {}, {})
-        //   .then(function(ovocie) {
-        //     self.ovocie = ovocie.data;
-        //   });
-
-        $scope.sort = function(keyname){
-            $scope.sortKey = keyname;   //set the sortKey to the param passed
-            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        $rootScope.createMovie = function (movie) {
+            LocalStorage.addNewMovie(movie);
+            $scope.movies = '';
+            $scope.movies = LocalStorage.get('movie');
+            $rootScope.genres = '';
+            $rootScope.genres = LocalStorage.get('genre');
         }
+        /**
+         * Removes movie
+         * @param genreName
+         */
+        $rootScope.dropMovie = function (movieName) {
+            LocalStorage.removeMovie(movieName);
+            $scope.movies = '';
+            $scope.movies = LocalStorage.get('movie');
+            $rootScope.genres = '';
+            $rootScope.genres = LocalStorage.get('genre');
+        }
+
+
+
+        /**
+         * Sort JSON Movies array by 'keyname'
+         * @param keyname
+         */
+        $rootScope.sortMovies = function (keyname) {
+            $scope.sortKeyMovie = keyname;   //set the sortKey to the param passed
+            $scope.reverseMovie = !$scope.reverseMovie; //if true make it false and vice versa
+        }
+
+        $scope.ngModelOptionsSelected = function(value) {
+            var _selected;
+
+            if (arguments.length) {
+                _selected = value;
+            } else {
+                return _selected;
+            }
+        };
+
     }
 
 
