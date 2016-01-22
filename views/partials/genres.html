@@ -18,7 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr dir-paginate="gen in genres | orderBy:sortKeyGen:reverseGen | filter:searchGen | itemsPerPage:5" ng-model="searchGen">
+                <tr ng-repeat="gen in genres | orderBy:sortKeyGen:reverseGen | filter:searchGen" ng-model="searchGen">
                     <td class="col-md-6">{{gen.name}}</td>
                     <td class="col-md-4">{{gen.num}}</td>
                     <td class="col-md-2"><a ng-click="dropGnre(gen)"><i
@@ -27,15 +27,6 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <dir-pagination-controls class="text-center center-block"
-                                     max-size="5"
-                                     direction-links="true"
-                                     boundary-links="true" >
-            </dir-pagination-controls>
         </div>
     </div>
 </div>
@@ -47,9 +38,9 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form class="form-inline">
+            <form name="genre" class="form-inline">
                 <div class="form-group">
-                    <input type="text" ng-model="searchGen" class="form-control" placeholder="Search">
+                    <input type="text" ng-model="searchGen" class="form-control" placeholder="Search" required>
                     <i class="btn btn-default fa fa-refresh" ng-click="searchGen=undefined"></i>
                 </div>
             </form>

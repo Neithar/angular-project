@@ -16,9 +16,8 @@
         <div class="row">
             <div class="col-md-12">
                 <!--{{genres}}-->
-                <!--<input type="text" ng-model="ngModelOptionsSelected" ng-model-options="modelOptions" uib-typeahead="genre for genre in genres | filter:$viewValue | limitTo:8" class="form-control">-->
-                <select class="form-control" data-ng-model="movie.genre" name="genre" id="repeatSelect">
-                    <option ng-repeat="genre in genres" value="{{genre.name}}">{{genre.name}}</option>
+                <select class="form-control" data-ng-model="movie.genre" name="genre" id="repeatSelect" required>
+                    <option ng-repeat="genre in genres" value="{{genre.name}}" required>{{genre.name}}</option>
                 </select>
             </div>
         </div>
@@ -28,7 +27,7 @@
                 data-ng-click="modalOptions.close();" data-dismiss="modal">Cancel
         </button>
         </button>
-        <button type="submit" data-ng-click="createMovie(newMovie);modalOptions.close()" class="btn btn-primary">{{modalOptions.actionButtonText}}
+        <button type="submit" data-ng-click="newMovie.$valid && (createMovie(newMovie, modalOptions))" class="btn btn-primary">{{modalOptions.actionButtonText}}
         </button>
     </div>
 </form>

@@ -30,8 +30,9 @@
         $rootScope.genres = LocalStorage.get('genre');
         $scope.movies = LocalStorage.get('movie');
 
-        ////////////  function definitions
-
+        /**
+         * Modal for new genre creation
+         */
         $scope.addGenre = function () {
 
             var modalDefaults = {
@@ -52,13 +53,14 @@
 
         }
         /**
-         * Creates new genre
+         * Creates new genre and save in LocalStorage
          * @pa"ram genreName
          */
-        $rootScope.createGenre = function (genreName) {
+        $rootScope.createGenre = function (genreName, modalOptions) {
             LocalStorage.addNewGenre(genreName);
             $rootScope.genres = '';
             $rootScope.genres = LocalStorage.get('genre');
+            modalOptions.close();
         }
         /**
          * Removes new genre
@@ -79,7 +81,9 @@
             $scope.reverseGen = !$scope.reverseGen; //if true make it false and vice versa
         }
 
-
+        /**
+         * Display modal to add Movie
+         */
         $scope.addMovie = function () {
 
             var modalDefaults = {
@@ -100,18 +104,19 @@
 
         }
         /**
-         * Creates new movie
+         * Creates new movie and save in LocalStorage
          * @param genreName
          */
-        $rootScope.createMovie = function (movie) {
+        $rootScope.createMovie = function (movie, modalOptions) {
             LocalStorage.addNewMovie(movie);
             $scope.movies = '';
             $scope.movies = LocalStorage.get('movie');
             $rootScope.genres = '';
             $rootScope.genres = LocalStorage.get('genre');
+            modalOptions.close();
         }
         /**
-         * Removes movie
+         * Removes movie from LocalStorage
          * @param genreName
          */
         $rootScope.dropMovie = function (movieName) {
@@ -122,8 +127,6 @@
             $rootScope.genres = LocalStorage.get('genre');
         }
 
-
-
         /**
          * Sort JSON Movies array by 'keyname'
          * @param keyname
@@ -133,7 +136,7 @@
             $scope.reverseMovie = !$scope.reverseMovie; //if true make it false and vice versa
         }
 
-        $scope.ngModelOptionsSelected = function(value) {
+        $scope.ngModelOptionsSelected = function (value) {
             var _selected;
 
             if (arguments.length) {
@@ -144,6 +147,5 @@
         };
 
     }
-
 
 })();

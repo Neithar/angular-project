@@ -19,7 +19,7 @@
                 data-ng-click="modalOptions.close();" data-dismiss="modal">Cancel
         </button>
         </button>
-        <button type="submit" data-ng-click="createGenre(newGenre);modalOptions.close()" class="btn btn-primary">{{modalOptions.actionButtonText}}
+        <button type="submit" data-ng-click="newGenre.$valid && (createGenre(newGenre, modalOptions))" class="btn btn-primary">{{modalOptions.actionButtonText}}
         </button>
     </div>
 </form>

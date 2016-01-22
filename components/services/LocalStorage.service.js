@@ -29,9 +29,7 @@
             '$window', '$rootScope', LocalStorageService
         ]);
 
-
     //////////////// factory
-
 
     function LocalStorageService($window, $rootScope) {
 
@@ -64,10 +62,6 @@
             removeAll: removeAll,
             list: list
         };
-
-
-        //////////////// function definitions
-
 
         /**
          * Set localStorage value and check if it already do not exists
@@ -161,7 +155,7 @@
                     genre: val.genre.$viewValue
                 });
                 for (var key in $rootScope.genres) {
-                    if(val.genre.$viewValue === $rootScope.genres[key].name){
+                    if (val.genre.$viewValue === $rootScope.genres[key].name) {
                         $rootScope.genres[key].num += 1;
                     }
                 }
@@ -176,7 +170,7 @@
                     genre: val.genre.$viewValue
                 });
                 for (var key in $rootScope.genres) {
-                    if(val.genre.$viewValue === $rootScope.genres[key].name){
+                    if (val.genre.$viewValue === $rootScope.genres[key].name) {
                         $rootScope.genres[key].num += 1;
                     }
                 }
@@ -209,7 +203,7 @@
                     return jsonObject.name != val.name;
                 });
                 for (var key in $rootScope.genres) {
-                    if(val.genre === $rootScope.genres[key].name){
+                    if (val.genre === $rootScope.genres[key].name) {
                         $rootScope.genres[key].num -= 1;
                     }
                 }
