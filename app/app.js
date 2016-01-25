@@ -35,9 +35,9 @@
     // routes
     $routeProvider
       .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+        templateUrl: 'views/index.html',
+        controller: 'IndexController',
+        controllerAs: 'index'
       })
       .otherwise({
         redirectTo: '/'

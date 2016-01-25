@@ -1,63 +1,66 @@
-<div class="col-md-3"></div>
-<div class="col-md-5">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Movies</h1>
+<div class="row" ng-controller="MovieController">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Movies</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="col-md-6" ng-click="sortMovies('name')">Title &nbsp;&nbsp;
+                            <i class="fa " ng-show="sortKeyMovie=='name'" ng-class="{'fa-sort-asc':reverseMovie,'fa-sort-desc':!reverseMovie}"></i>
+                        </th>
+                        <th class="col-md-4">Genre</th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="movie in movies | orderBy:sortKeyMovie:reverseMovie | filter:searchMovie" ng-model="searchMovie">
+                        <td class="col-md-6">{{movie.name}}</td>
+                        <td class="col-md-4">{{movie.genre}}</td>
+                        <td class="col-md-2"><a ng-click="dropMovie(movie)"><i
+                                class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <dir-pagination-controls class="text-center center-block"
+                                         max-size="5"
+                                         direction-links="true"
+                                         boundary-links="true" >
+                </dir-pagination-controls>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th class="col-md-6" ng-click="sortMovies('name')">Title &nbsp;&nbsp;
-                        <i class="fa " ng-show="sortKeyMovie=='name'" ng-class="{'fa-sort-asc':reverseMovie,'fa-sort-desc':!reverseMovie}"></i>
-                    </th>
-                    <th class="col-md-4">Genre</th>
-                    <th class="col-md-2"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr dir-paginate="movie in movies | orderBy:sortKeyMovie:reverseMovie | filter:searchMovie | itemsPerPage:5" ng-model="searchMovie">
-                    <td class="col-md-6">{{movie.name}}</td>
-                    <td class="col-md-4">{{movie.genre}}</td>
-                    <td class="col-md-2"><a ng-click="dropMovie(movie)"><i
-                            class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Filters</h2>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <dir-pagination-controls class="text-center center-block"
-                                     max-size="5"
-                                     direction-links="true"
-                                     boundary-links="true" >
-            </dir-pagination-controls>
+        <div class="row">
+            <div class="col-md-12">
+                <form name="movie" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" ng-model="searchMovie" class="form-control" placeholder="Search"> <i class="btn btn-default fa fa-refresh" ng-click="searchMovie=undefined"></i>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-</div>
-<div class="col-md-4">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Filters</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form name="movie" class="form-inline">
-                <div class="form-group">
-                    <input type="text" ng-model="searchMovie" class="form-control" placeholder="Search"> <i class="btn btn-default fa fa-refresh" ng-click="searchMovie=undefined"></i>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Actions</h2>
-            <a ng-click="addMovie()" class="btn btn-primary">Add Movie</a>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Actions</h2>
+                <a ng-click="addMovie()" class="btn btn-primary">Add Movie</a>
+            </div>
         </div>
     </div>
 </div>
