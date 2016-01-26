@@ -70,26 +70,26 @@
 	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
 	<script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
-	<script type="text/javascript" src="bower_components/angularUtils-pagination/dirPagination.js"></script>
 	<!-- endbuild -->
 
 	<!-- Angular components -->
 	<!-- build:appcomponents js/appcomponents.js -->
 	<script type="text/javascript" src="app/app.js"></script>
-	<script type="text/javascript" src="app/config.js"></script>
+	<script type="text/javascript" src="config/config.js"></script>
 	<script type="text/javascript" src="components/services/LocalStorage.service.js"></script>
 	<script type="text/javascript" src="components/services/queryService.service.js"></script>
 	<script type="text/javascript" src="components/services/modalService.js"></script>
 	<script type="text/javascript" src="components/directives/main.nav.directive.js"></script>
 	<script type="text/javascript" src="components/directives/responsive.nav.directive.js"></script>
+	<script type="text/javascript" src="components/directives/message-box.js"></script>
 	<!-- endbuild -->
 
 	<!-- Application sections -->
 	<!-- build:mainapp js/mainapp.js -->
-	<script type="text/javascript" src="app/factory.js"></script>
-	<script type="text/javascript" src="app/indexController.js"></script>
-	<script type="text/javascript" src="app/genreController.js"></script>
-	<script type="text/javascript" src="app/movieController.js"></script>
+	<script type="text/javascript" src="components/services/factory.js"></script>
+	<script type="text/javascript" src="controllers/indexCtrl.js"></script>
+	<script type="text/javascript" src="controllers/genreCtrl.js"></script>
+	<script type="text/javascript" src="controllers/movieCtrl.js"></script>
 	<!-- endbuild -->
 
 	<!-- templates from $templateCache -->

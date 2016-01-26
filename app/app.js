@@ -12,8 +12,7 @@
       'ngRoute',
       'ui.bootstrap',
       'ngAnimate',
-      'ngMessages',
-      'angularUtils.directives.dirPagination'
+      'ngMessages'
     ])
     .config(config);
 
@@ -36,7 +35,7 @@
     $routeProvider
       .when('/', {
         templateUrl: 'views/index.html',
-        controller: 'IndexController',
+        controller: 'IndexCtrl',
         controllerAs: 'index'
       })
       .otherwise({

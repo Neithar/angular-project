@@ -5,30 +5,30 @@
     'use strict';
     angular
         .module('boilerplate')
-        .controller('GenreController', GenreController);
+        .controller('GenreCtrl', GenreCtrl);
 
-    GenreController.$inject = ['LocalStorage', 'modalService', '$rootScope', '$scope'];
+    GenreCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope', '$scope'];
 
     /**
      * Genre controller
      * @param LocalStorage
-     * @param QueryService
      * @param modalService
      * @param $rootScope
      * @param $scope
      * @constructor
      */
-    function GenreController(LocalStorage, modalService, $rootScope, $scope) {
+    function GenreCtrl(LocalStorage, modalService, $rootScope, $scope) {
 
         // 'controller as' syntax
         var self = this;
+        self.message = '';
 
-        $rootScope.genres = LocalStorage.get('genre');
+        self.list = LocalStorage.get('genre');
 
         /**
          * Modal for new genre creation
          */
-        $scope.addGenre = function () {
+        self.addGenre = function () {
 
             var modalDefaults = {
                 backdrop: true,
@@ -51,29 +51,30 @@
          * Creates new genre and save in LocalStorage
          * @pa"ram genreName
          */
-        $rootScope.createGenre = function (genreName, modalOptions) {
+        self.createGenre = function (genreName, modalOptions) {
             LocalStorage.addNewGenre(genreName);
-            $rootScope.genres = '';
-            $rootScope.genres = LocalStorage.get('genre');
+            self.list = '';
+            self.list = LocalStorage.get('genre');
             modalOptions.close();
+            self.message = "Created Genre";
         }
         /**
          * Removes new genre
          * @param genreName
          */
-        $rootScope.dropGnre = function (genreName) {
+        self.dropGnre = function (genreName) {
             LocalStorage.removeGenre(genreName);
-            $rootScope.genres = '';
-            $rootScope.genres = LocalStorage.get('genre');
+            self.list = LocalStorage.get('genre');
+            self.message = "Dropped Genre";
         }
 
         /**
          * Sort JSON Generes array by 'keyname'
          * @param keyname
          */
-        $rootScope.sortGenres = function (keyname) {
-            $scope.sortKeyGen = keyname;   //set the sortKey to the param passed
-            $scope.reverseGen = !$scope.reverseGen; //if true make it false and vice versa
+        self.sortGenres = function (keyname) {
+            self.sortKeyGen = keyname;   //set the sortKey to the param passed
+            self.reverseGen = !self.reverseGen; //if true make it false and vice versa
         }
     }
 

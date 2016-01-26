@@ -1,4 +1,4 @@
-<div class="row" ng-controller="GenreController">
+<div class="row" ng-controller="GenreCtrl as gen">
     <div class="col-md-3"></div>
     <div class="col-md-5">
         <div class="row">
@@ -8,21 +8,28 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <message-box ng-type="success"
+                             ng-title="{{gen.message}}">{{gen.message}}</message-box>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="col-md-6" ng-click="sortGenres('name')">Name &nbsp;&nbsp;
-                            <i class="fa " ng-show="sortKeyGen=='name'" ng-class="{'fa-sort-asc':reverseGen,'fa-sort-desc':!reverseGen}"></i>
+                        <th class="col-md-6" ng-click="gen.sortGenres('name')">Name &nbsp;&nbsp;
+                            <i class="fa " ng-show="gen.sortKeyGen=='name'" ng-class="{'fa-sort-asc':gen.reverseGen,'fa-sort-desc':!gen.reverseGen}"></i>
                         </th>
                         <th class="col-md-4">Num movies</th>
                         <th class="col-md-2"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="gen in genres | orderBy:sortKeyGen:reverseGen | filter:searchGen" ng-model="searchGen">
-                        <td class="col-md-6">{{gen.name}}</td>
-                        <td class="col-md-4">{{gen.num}}</td>
-                        <td class="col-md-2"><a ng-click="dropGnre(gen)"><i
+                    {{ gen.list }}
+                    <tr ng-repeat="genre in gen.list | orderBy:gen.sortKeyGen:gen.reverseGen | filter:gen.searchGen track by $index" ng-model="gen.searchGen">
+                        <td class="col-md-6">{{genre.name}}</td>
+                        <td class="col-md-4">{{genre.num}}</td>
+                        <td class="col-md-2"><a ng-click="gen.dropGnre(genre)"><i
                                 class="btn btn-danger btn-danger-custom fa fa-trash-o"></i></a>
                         </td>
                     </tr>
@@ -41,8 +48,8 @@
             <div class="col-md-12">
                 <form name="genre" class="form-inline">
                     <div class="form-group">
-                        <input type="text" ng-model="searchGen" class="form-control" placeholder="Search" required>
-                        <i class="btn btn-default fa fa-refresh" ng-click="searchGen=undefined"></i>
+                        <input type="text" ng-model="gen.searchGen" class="form-control" placeholder="Search" required>
+                        <i class="btn btn-default fa fa-refresh" ng-click="gen.searchGen=undefined"></i>
                     </div>
                 </form>
             </div>
@@ -50,7 +57,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Actions</h2>
-                <a ng-click="addGenre()" class="btn btn-primary">Add Genre</a>
+                <a ng-click="gen.addGenre()" class="btn btn-primary">Add Genre</a>
             </div>
         </div>
     </div>

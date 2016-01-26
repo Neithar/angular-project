@@ -92,24 +92,21 @@
             if (!supported) {
                 console.log('localStorage not supported, make sure you have the $cookies supported.');
             }
+            var genres = [];
 
             if (window.localStorage.getItem('genre') === null || window.localStorage.getItem('genre') === undefined) {
-                var genre = [];
-                genre.push({
+                genres.push({
                     name: val.name.$viewValue,
                     num: 0
                 });
-                $rootScope.sortGenres('name');
-                return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(genre));
             } else {
-                var myGenres = JSON.parse($window.localStorage.getItem('genre'));
-                myGenres.push({
+                genres = JSON.parse($window.localStorage.getItem('genre'));
+                genres.push({
                     name: val.name.$viewValue,
                     num: 0
                 });
-                return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(myGenres));
-
             }
+            return $window.localStorage && $window.localStorage.setItem('genre', JSON.stringify(genres));
         }
 
         /**
@@ -144,42 +141,39 @@
          * @param {string} val  Return stored value
          */
         function addNewMovie(val) {
+            var movies = window.localStorage.getItem('movie');
+            var genres = window.localStorage.getItem('genre');
+            var movie = [];
+
             if (!supported) {
                 console.log('localStorage not supported, make sure you have the $cookies supported.');
             }
 
-            if (window.localStorage.getItem('movie') === null || window.localStorage.getItem('movie') === undefined) {
-                var movie = [];
+            if (movies === null || movies === undefined) {
                 movie.push({
                     name: val.name.$viewValue,
                     genre: val.genre.$viewValue
                 });
-                for (var key in $rootScope.genres) {
-                    if (val.genre.$viewValue === $rootScope.genres[key].name) {
-                        $rootScope.genres[key].num += 1;
+                for (var key in genres) {
+                    if (val.genre.$viewValue === genres[key].name) {
+                        genres[key].num += 1;
                     }
                 }
-                $rootScope.sortMovies('name');
-                var updatedGenres = angular.toJson($rootScope.genres);
-                $window.localStorage.setItem('genre', updatedGenres)
-                return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(movie));
             } else {
-                var myMovies = JSON.parse($window.localStorage.getItem('movie'));
-                myMovies.push({
+                movie = JSON.parse(movies);
+                movie.push({
                     name: val.name.$viewValue,
                     genre: val.genre.$viewValue
                 });
-                for (var key in $rootScope.genres) {
-                    if (val.genre.$viewValue === $rootScope.genres[key].name) {
-                        $rootScope.genres[key].num += 1;
+                genres = JSON.parse(genres);
+                for (var key in genres) {
+                    if (val.genre.$viewValue === genres[key].name) {
+                        genres[key].num += 1;
                     }
                 }
-                $rootScope.sortMovies('name');
-                var updatedGenres = angular.toJson($rootScope.genres);
-                $window.localStorage.setItem('genre', updatedGenres)
-                return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(myMovies));
-
             }
+            $window.localStorage.setItem('genre', JSON.stringify(genres));
+            return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(movie));
         }
 
         /**
@@ -190,6 +184,7 @@
          */
         function removeMovie(val) {
             var arrayMovies = JSON.parse($window.localStorage.getItem('movie'));
+            var genres = window.localStorage.getItem('genre');
 
             if (!supported) {
                 console.log('localStorage not supported, make sure you have the $cookies supported.');
@@ -202,13 +197,13 @@
                 var arrayMovies = arrayMovies.filter(function (jsonObject) {
                     return jsonObject.name != val.name;
                 });
-                for (var key in $rootScope.genres) {
-                    if (val.genre === $rootScope.genres[key].name) {
-                        $rootScope.genres[key].num -= 1;
+                genres = JSON.parse(genres);
+                for (var key in genres) {
+                    if (val.genre === genres[key].name) {
+                        genres[key].num -= 1;
                     }
                 }
-                var updatedGenres = angular.toJson($rootScope.genres);
-                $window.localStorage.setItem('genre', updatedGenres);
+                $window.localStorage.setItem('genre', JSON.stringify(genres));
                 return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(arrayMovies));
             }
         }

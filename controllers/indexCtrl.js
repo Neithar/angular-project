@@ -9,20 +9,19 @@
     'use strict';
     angular
         .module('boilerplate')
-        .controller('IndexController', IndexController);
+        .controller('IndexCtrl', IndexCtrl);
 
-    IndexController.$inject = ['LocalStorage', 'QueryService', 'modalService', '$rootScope', '$scope'];
+    IndexCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope', '$scope'];
 
     /**
      * Main controller
      * @param LocalStorage
-     * @param QueryService
      * @param modalService
      * @param $rootScope
      * @param $scope
      * @constructor
      */
-    function IndexController(LocalStorage, QueryService, modalService, $rootScope, $scope) {
+    function IndexCtrl(LocalStorage, modalService, $rootScope, $scope) {
 
         // 'controller as' syntax
         var self = this;
