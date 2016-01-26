@@ -1,0 +1,15 @@
+<div class="row border-radius3 clearfix">
+    <div class="fade in alert"ng-class="'alert-'+ngType">
+        <div class="col-md-2">
+            <i class="fa fa-2x"
+               ng-class="ngType == 'success'? 'fa-check' :
+                   (ngType == 'error' ? 'fa-times' :
+                   (ngType == 'info' ? 'fa-info':
+                   (ngType == 'alert' ? 'fa-exclamation-triangle' : ''))) ">
+            </i>
+        </div>
+        <div class="col-md-10">
+            <span>{{ngTitle}}</span>
+        </div>
+    </div>
+</div>

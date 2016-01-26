@@ -159,6 +159,7 @@
                         genres[key].num += 1;
                     }
                 }
+
             } else {
                 movie = JSON.parse(movies);
                 movie.push({
@@ -171,8 +172,9 @@
                         genres[key].num += 1;
                     }
                 }
+                genres = angular.toJson(genres)
             }
-            $window.localStorage.setItem('genre', JSON.stringify(genres));
+            $window.localStorage.setItem('genre', genres);
             return $window.localStorage && $window.localStorage.setItem('movie', JSON.stringify(movie));
         }
 

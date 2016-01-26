@@ -7,10 +7,9 @@
                 <h1>Movies</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-class="!msg.text ? 'hidden' : 'show'">
             <div class="col-md-12">
-                <message-box ng-type="success"
-                             ng-title="{{mov.message}}"></message-box>
+                <message-box ng-type="{{msg.type}}" ng-title="{{msg.text}}">{{msg.text}}</message-box>
             </div>
         </div>
         <div class="row">
@@ -26,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="movie in mov.movies | orderBy:mov.sortKeyMovie:mov.reverseMovie | filter:mov.searchMovie track by $index" ng-model="mov.searchMovie">
+                    <tr ng-repeat="movie in movies | orderBy:mov.sortKeyMovie:mov.reverseMovie | filter:mov.searchMovie track by $index" ng-model="mov.searchMovie">
                         <td class="col-md-6">{{movie.name}}</td>
                         <td class="col-md-4">{{movie.genre}}</td>
                         <td class="col-md-2"><a ng-click="mov.dropMovie(movie)"><i

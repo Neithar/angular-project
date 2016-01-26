@@ -14,3 +14,10 @@ Based on: Bones - github.com/eddiemachado/bones
 .alert-help {
   @extend %alert;
 }
+.alert{
+  padding-bottom: 30px;
+  font-size: 1.5em;
+  i{
+
+  }
+}

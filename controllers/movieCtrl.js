@@ -24,6 +24,14 @@
 
         self.movies = LocalStorage.get('movie');
         self.genres = LocalStorage.get('genre');
+        self.msg = {
+            type: '',
+            text: ''
+        };
+
+        $rootScope.movies = self.movies;
+        $rootScope.list = self.genres;
+        $rootScope.msg = self.msg;
 
         /**
          * Display modal to add Movie
@@ -56,7 +64,16 @@
             self.sortMovies('name');
             self.movies = LocalStorage.get('movie');
             self.genres = LocalStorage.get('genre');
+            self.message = {
+                type: 'success',
+                text: 'Created Movie successfully'
+            };
+
+            $rootScope.movies = self.movies;
+            $rootScope.list = self.genres;
+            $rootScope.msg = self.message;
             modalOptions.close();
+            this.sortMovies('name');
         }
         /**
          * Removes movie from LocalStorage
@@ -66,6 +83,15 @@
             LocalStorage.removeMovie(movieName);
             self.movies = LocalStorage.get('movie');
             self.genres = LocalStorage.get('genre');
+            self.message = {
+                type: 'success',
+                text: 'Dropped Movie successfully'
+            };
+
+            $rootScope.movies = self.movies;
+            $rootScope.msg = self.message;
+            $rootScope.list = self.genres;
+            this.sortMovies('name');
         }
 
         /**

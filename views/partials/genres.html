@@ -6,10 +6,9 @@
                 <h1>Genres</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-class="!message.text ? 'hidden' : 'show'">
             <div class="col-md-12">
-                <message-box ng-type="success"
-                             ng-title="{{gen.message}}">{{gen.message}}</message-box>
+                <message-box ng-type="{{message.type}}" ng-title="{{message.text}}">{{message.text}}</message-box>
             </div>
         </div>
         <div class="row">
@@ -25,8 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {{ gen.list }}
-                    <tr ng-repeat="genre in gen.list | orderBy:gen.sortKeyGen:gen.reverseGen | filter:gen.searchGen track by $index" ng-model="gen.searchGen">
+                    <tr ng-repeat="genre in list | orderBy:gen.sortKeyGen:gen.reverseGen | filter:gen.searchGen track by $index" ng-model="gen.searchGen">
                         <td class="col-md-6">{{genre.name}}</td>
                         <td class="col-md-4">{{genre.num}}</td>
                         <td class="col-md-2"><a ng-click="gen.dropGnre(genre)"><i

@@ -21,10 +21,14 @@
 
         // 'controller as' syntax
         var self = this;
-        self.message = '';
-
+        self.message = {
+            type: '',
+            text: ''
+        };
         self.list = LocalStorage.get('genre');
 
+        $rootScope.list = self.list;
+        $rootScope.message = self.message;
         /**
          * Modal for new genre creation
          */
@@ -55,8 +59,16 @@
             LocalStorage.addNewGenre(genreName);
             self.list = '';
             self.list = LocalStorage.get('genre');
+            self.message =  self.message = {
+                type: 'success',
+                text: 'Genre created successfully!'
+            };
+
             modalOptions.close();
-            self.message = "Created Genre";
+            $rootScope.message = self.message;
+            $rootScope.list = self.list;
+
+
         }
         /**
          * Removes new genre
@@ -65,7 +77,13 @@
         self.dropGnre = function (genreName) {
             LocalStorage.removeGenre(genreName);
             self.list = LocalStorage.get('genre');
-            self.message = "Dropped Genre";
+            self.message =  self.message = {
+                type: 'success',
+                text: 'Genre dropped successfully!'
+            };
+            $rootScope.message = self.message;
+            $rootScope.list = self.list;
+            this.sortGenres('name');
         }
 
         /**
