@@ -18,7 +18,7 @@ describe('Tests for Genres section', function() {
         poGenre.openModal();
         browser.waitForAngular();
 
-        // Check for invalid movie name format
+        // Check for invalid genre name format
         // --------------------------------------
         utils.fillInput(poGenre.inputs.name, 'name', "m");
         poGenre.btnSubmit.click();
