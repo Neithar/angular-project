@@ -7,17 +7,16 @@
         .module('boilerplate')
         .controller('GenreCtrl', GenreCtrl);
 
-    GenreCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope', '$scope'];
+    GenreCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope'];
 
     /**
      * Genre controller
      * @param LocalStorage
      * @param modalService
      * @param $rootScope
-     * @param $scope
      * @constructor
      */
-    function GenreCtrl(LocalStorage, modalService, $rootScope, $scope) {
+    function GenreCtrl(LocalStorage, modalService, $rootScope) {
 
         // 'controller as' syntax
         var self = this;

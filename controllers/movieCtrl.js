@@ -7,17 +7,16 @@
         .module('boilerplate')
         .controller('MovieCtrl', MovieCtrl);
 
-    MovieCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope', '$scope'];
+    MovieCtrl.$inject = ['LocalStorage', 'modalService', '$rootScope'];
 
     /**
      * Movie controller
      * @param LocalStorage
      * @param modalService
      * @param $rootScope
-     * @param $scope
      * @constructor
      */
-    function MovieCtrl(LocalStorage, modalService, $rootScope, $scope) {
+    function MovieCtrl(LocalStorage, modalService, $rootScope) {
 
         // 'controller as' syntax
         var self = this;
