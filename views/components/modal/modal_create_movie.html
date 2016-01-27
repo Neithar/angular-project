@@ -20,13 +20,21 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" ng-messages="newMovie.name.$error && newMovie.genre.$error " ng-show='submitted' role="alert">
+                    <div ng-message="required"><span>You must fill all fields</span></div>
+                    <div ng-message="minlength"><span>Your field is too short. 3 chars min</span></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-default"
                 data-ng-click="modalOptions.close();" data-dismiss="modal">Cancel
         </button>
         </button>
-        <button type="submit" data-ng-click="newMovie.$valid && (mov.createMovie(newMovie, modalOptions))" class="btn btn-primary">{{modalOptions.actionButtonText}}
+        <button type="submit" id="submit" data-ng-click="newMovie.$valid && (mov.createMovie(newMovie, modalOptions)); submitted=true" class="btn btn-primary">{{modalOptions.actionButtonText}}
         </button>
     </div>
 </form>
