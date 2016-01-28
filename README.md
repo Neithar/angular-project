@@ -70,7 +70,7 @@ gulp server-build
 ## Contact
 Copyright (C) 2016 Sonia Benítez<br>
 [www.neithar-aradia.com](http://www.neithar-aradia.com)<br>
-[https://github.com/Neithar]https://github.com/Neithar)<br>
+[https://github.com/Neithar](https://github.com/Neithar)<br>
 Released under MIT license
 
 
